@@ -37,7 +37,7 @@ function renderCard(cardData, cardId) {
 
     // Estructura HTML inyectada para esta tarjeta
     card.innerHTML = `
-        <h2 class="card-title" contenteditable="true">${cardData.title || "Nueva Lista ✨"}</h2>
+        <h2 class="card-title" contenteditable="true">${cardData.title || "Nueva Lista"}</h2>
         
         <ul class="task-list">
             ${items.map((item, index) => `
