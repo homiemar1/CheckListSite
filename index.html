@@ -3,49 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Checklists</title>
+    <title>Mis Checklists Cozy</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Fuente amigable y redondeada -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Título editable: haz clic y escribe -->
-    <h1 contenteditable="true" id="main-title">✨ Mi Espacio Cozy ✨</h1>
-    
-    <div class="board" id="board">
-        
-        <!-- ESTA ES TU VENTANITA DE EJEMPLO -->
-        <div class="checklist-card">
-            <h2 contenteditable="true" class="card-title">Tareas de Hoy</h2>
-            
-            <ul class="task-list">
-                <li class="task-item">
-                    <label>
-                        <input type="checkbox">
-                        <span class="custom-checkbox"></span>
-                        Hacer un té 🍵
-                    </label>
-                    <button class="delete-btn">x</button>
-                </li>
-                <li class="task-item">
-                    <label>
-                        <input type="checkbox" checked>
-                        <span class="custom-checkbox"></span>
-                        Regar las plantas 🌱
-                    </label>
-                    <button class="delete-btn">x</button>
-                </li>
-            </ul>
-
-            <div class="add-task-container">
-                <input type="text" placeholder="Nueva tarea..." class="new-task-input">
-                <button class="add-btn">+</button>
-            </div>
-        </div>
-        <!-- FIN DE LA VENTANITA DE EJEMPLO -->
-
+    <div class="header">
+        <!-- Título que puedes editar haciendo clic en él -->
+        <h1 contenteditable="true" id="main-title">✨ Mi Espacio Cozy ✨</h1>
+        <button id="add-card-btn" class="main-add-btn">+ Nueva Ventana</button>
     </div>
+    
+    <!-- Aquí es donde la magia de JavaScript inyectará las ventanitas -->
+    <div class="board" id="board"></div>
 
-    <!-- Script de tipo módulo para usar Firebase -->
+    <!-- Conexión con nuestro archivo de lógica -->
     <script type="module" src="app.js"></script>
 </body>
 </html>
