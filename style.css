@@ -53,14 +53,22 @@ h1 {
 }
 
 /* =========================================
-   3. TABLERO (Organización de las ventanas)
+   3. TABLERO (Diseño tipo Masonry / Pinterest)
 ========================================= */
 .board {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
+    column-count: 3; /* Número de columnas en pantallas grandes */
+    column-gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hacemos que sea responsive para móviles y tablets */
+@media (max-width: 900px) {
+    .board { column-count: 2; }
+}
+@media (max-width: 600px) {
+    .board { column-count: 1; }
 }
 
 /* =========================================
@@ -74,8 +82,13 @@ h1 {
     border: 1px solid #F0E6D2;
     display: flex;
     flex-direction: column;
+    
+    /* Estas dos líneas son la magia para que no se corten entre columnas */
+    break-inside: avoid;
+    margin-bottom: 30px; 
 }
 
+/* (El resto de estilos de card-title se mantienen igual) */
 .card-title[contenteditable="true"] {
     font-size: 1.4rem;
     color: var(--accent-color);
