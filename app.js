@@ -58,7 +58,7 @@ addCardBtn.addEventListener('click', async () => {
     console.log("Intentando crear ventana...");
     try {
         await addDoc(collection(db, "checklists"), {
-            title: "Nueva Lista ✨",
+            title: "Nueva Lista",
             items: []
         });
     } catch (error) {
