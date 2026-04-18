@@ -102,3 +102,24 @@ h1 {
     cursor: pointer;
     font-weight: bold;
 }
+
+/* Efecto de tachado para tareas completadas */
+.task-item.completed span {
+    text-decoration: line-through;
+    color: #a09398; /* Un tono más apagado para que se vea completado */
+    transition: all 0.3s ease;
+}
+
+/* Ajuste para el título editable */
+.card-title[contenteditable="true"] {
+    cursor: text;
+    padding: 5px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.card-title[contenteditable="true"]:hover,
+.card-title[contenteditable="true"]:focus {
+    background-color: #FDF6E3;
+    outline: 2px solid var(--accent-color);
+}
