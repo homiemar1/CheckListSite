@@ -1,125 +1,84 @@
-:root {
-    --bg-color: #FDF6E3;
-    --card-bg: #FFFFFF;
-    --text-color: #5C4B51;
-    --accent-color: #E2A76F;
-    --accent-hover: #C88D56;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Nunito', sans-serif;
-    padding: 40px 20px;
-    margin: 0;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-h1 {
-    color: var(--accent-color);
-    font-size: 2.5rem;
-    margin-bottom: 25px;
-}
-
-/* BOTÓN PRINCIPAL CON DISEÑO */
-.main-add-btn {
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 50px; /* Muy redondeado */
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(226, 167, 111, 0.4);
-    transition: all 0.3s ease;
-}
-
-.main-add-btn:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px); /* Efecto de levitación */
-    box-shadow: 0 6px 20px rgba(226, 167, 111, 0.5);
-}
-
-.board {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Tarjeta / Ventana */
-.checklist-card {
-    background-color: var(--card-bg);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(92, 75, 81, 0.05);
+/* DISEÑO DEL CHECKLIST (TAREAS) */
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #FCF9F2; /* Fondo crema muy suave para cada tarea */
+    padding: 10px 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
     border: 1px solid #F0E6D2;
 }
 
-.card-title {
-    font-size: 1.4rem;
-    color: var(--accent-color);
-    border-bottom: 2px dashed #F0E6D2;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-/* Estilo para los botones de añadir dentro de la tarjeta */
-.add-task-container {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.new-task-input {
-    flex-grow: 1;
-    border: 1.5px solid #F0E6D2;
-    border-radius: 10px;
-    padding: 10px;
-    outline: none;
-}
-
-.add-task-btn {
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    width: 40px;
+.task-checkbox {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--accent-color);
     cursor: pointer;
-    font-weight: bold;
+    flex-shrink: 0;
 }
 
-/* Efecto de tachado para tareas completadas */
-.task-item.completed span {
-    text-decoration: line-through;
-    color: #a09398; /* Un tono más apagado para que se vea completado */
+.task-text {
+    flex-grow: 1;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
-/* Ajuste para el título editable */
+/* EFECTO DE TACHADO AL COMPLETAR */
+.task-item.completed {
+    background-color: #F5F5F5;
+    border-color: transparent;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #A09398;
+}
+
+/* BOTONES DE BORRAR TAREA Y VENTANA (ESTILO COZY) */
+.delete-task-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.delete-task-btn:hover {
+    opacity: 1;
+}
+
+.delete-card-btn {
+    background-color: #FFAAA5; /* Coral suave */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.delete-card-btn:hover {
+    background-color: #FF8A84; /* Coral un poco más fuerte al pasar el ratón */
+}
+
+/* TÍTULO EDITABLE DE LA VENTANA */
 .card-title[contenteditable="true"] {
     cursor: text;
     padding: 5px;
     border-radius: 8px;
     transition: background 0.2s;
+    border-bottom: 2px dashed #F0E6D2;
 }
 
 .card-title[contenteditable="true"]:hover,
 .card-title[contenteditable="true"]:focus {
     background-color: #FDF6E3;
-    outline: 2px solid var(--accent-color);
+    outline: none;
 }
