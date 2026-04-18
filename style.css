@@ -1,13 +1,118 @@
-/* DISEÑO DEL CHECKLIST (TAREAS) */
+/* =========================================
+   1. VARIABLES Y ESTILOS BASE
+========================================= */
+:root {
+    --bg-color: #FDF6E3; /* Blanco roto cálido */
+    --card-bg: #FFFFFF;
+    --text-color: #5C4B51; /* Marrón grisáceo suave */
+    --accent-color: #E2A76F; /* Naranja/Marrón cálido */
+    --accent-hover: #C88D56;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Nunito', sans-serif;
+    padding: 40px 20px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* =========================================
+   2. CABECERA Y BOTÓN PRINCIPAL
+========================================= */
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.main-add-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(226, 167, 111, 0.4);
+    transition: all 0.3s ease;
+}
+
+.main-add-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(226, 167, 111, 0.5);
+}
+
+/* =========================================
+   3. TABLERO (Organización de las ventanas)
+========================================= */
+.board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   4. DISEÑO DE LA VENTANA (TARJETA)
+========================================= */
+.checklist-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(92, 75, 81, 0.05);
+    border: 1px solid #F0E6D2;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title[contenteditable="true"] {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    border-bottom: 2px dashed #F0E6D2;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    cursor: text;
+    border-radius: 8px;
+    transition: background 0.2s;
+    outline: none;
+}
+
+.card-title[contenteditable="true"]:hover,
+.card-title[contenteditable="true"]:focus {
+    background-color: #FDF6E3;
+}
+
+/* =========================================
+   5. LISTA DE TAREAS Y TACHADO
+========================================= */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
 .task-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    background-color: #FCF9F2; /* Fondo crema muy suave para cada tarea */
+    background-color: #FCF9F2;
     padding: 10px 15px;
     border-radius: 12px;
     margin-bottom: 10px;
     border: 1px solid #F0E6D2;
+    transition: all 0.3s ease;
 }
 
 .task-checkbox {
@@ -22,9 +127,9 @@
     flex-grow: 1;
     font-size: 1rem;
     transition: all 0.3s ease;
+    word-break: break-word;
 }
 
-/* EFECTO DE TACHADO AL COMPLETAR */
 .task-item.completed {
     background-color: #F5F5F5;
     border-color: transparent;
@@ -35,7 +140,9 @@
     color: #A09398;
 }
 
-/* BOTONES DE BORRAR TAREA Y VENTANA (ESTILO COZY) */
+/* =========================================
+   6. BOTONES INTERNOS Y CONTROLES
+========================================= */
 .delete-task-btn {
     background: none;
     border: none;
@@ -43,21 +150,57 @@
     font-size: 1.1rem;
     opacity: 0.6;
     transition: opacity 0.2s;
+    padding: 0;
 }
 
 .delete-task-btn:hover {
     opacity: 1;
 }
 
-.delete-card-btn {
-    background-color: #FFAAA5; /* Coral suave */
+.add-task-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.new-task-input {
+    flex-grow: 1;
+    border: 1.5px solid #F0E6D2;
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+.new-task-input:focus {
+    border-color: var(--accent-color);
+}
+
+.add-task-btn {
+    background-color: var(--accent-color);
     color: white;
     border: none;
-    padding: 10px;
+    border-radius: 10px;
+    width: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: background-color 0.2s;
+}
+
+.add-task-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.delete-card-btn {
+    background-color: #FFAAA5;
+    color: white;
+    border: none;
+    padding: 12px;
     border-radius: 12px;
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     cursor: pointer;
     margin-top: 20px;
     transition: background-color 0.2s;
@@ -65,20 +208,5 @@
 }
 
 .delete-card-btn:hover {
-    background-color: #FF8A84; /* Coral un poco más fuerte al pasar el ratón */
-}
-
-/* TÍTULO EDITABLE DE LA VENTANA */
-.card-title[contenteditable="true"] {
-    cursor: text;
-    padding: 5px;
-    border-radius: 8px;
-    transition: background 0.2s;
-    border-bottom: 2px dashed #F0E6D2;
-}
-
-.card-title[contenteditable="true"]:hover,
-.card-title[contenteditable="true"]:focus {
-    background-color: #FDF6E3;
-    outline: none;
+    background-color: #FF8A84;
 }
