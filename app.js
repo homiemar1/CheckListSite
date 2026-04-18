@@ -106,7 +106,7 @@ onSnapshot(collection(db, "checklists"), (snapshot) => {
 // Botón principal de la cabecera
 addCardBtn.addEventListener('click', async () => {
     await addDoc(collection(db, "checklists"), {
-        title: "Lista Cozy ☕",
+        title: "Nueva Lista",
         items: []
     });
 });
